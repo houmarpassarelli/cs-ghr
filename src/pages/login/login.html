@@ -1,0 +1,36 @@
+
+<ion-content padding>
+
+  <!-- <form [formGroup]="login" (ngSubmit)="loginCommon(); $event.preventDefault()"> -->
+  
+  <ion-list no-lines>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" name="email" [(ngModel)]="login.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" name="senha" [(ngModel)]="login.senha"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="loginCommon()">ACESSAR</button>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+      <button ion-button block icon-left>
+          <ion-icon name="logo-facebook"></ion-icon>
+          usar facebook
+        </button>
+        <button ion-button block icon-left>
+          <ion-icon name="logo-google"></ion-icon>
+          usar google
+        </button>
+        <button ion-button (click)="novoCadastro()" block icon-left>
+          <ion-icon name="person-add"></ion-icon>
+          novo cadastro
+        </button>
+</ion-list>
+</ion-content>
+

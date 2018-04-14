@@ -1,0 +1,115 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inserção de Dados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <h2>Pacotes</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label>Titulo Pacote</ion-label>
+      <ion-input type="text" name="titulo" [(ngModel)]="pacote.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>QTD Ofertas</ion-label>
+      <ion-input type="text" name="qtdofertas" [(ngModel)]="pacote.qtdofertas"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Valor</ion-label>
+      <ion-input type="text" name="valor" [(ngModel)]="pacote.valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="inserirPacote()">Inserir Pacote</button>
+    </ion-item>
+  </ion-list>
+  <h2>Estabelecimento</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label>Titulo do Estabelecimento</ion-label>
+      <ion-input type="text" name="titulo" [(ngModel)]="estabelecimento.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Segmento</ion-label>
+      <ion-select [(ngModel)]="estabelecimento.segmento">
+        <ion-option *ngFor="let segment of segmentos | async" value="{{ segment.titulo }}">{{ segment.titulo }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="inserirEstabelecimento()">Inserir Estabelecimento</button>
+    </ion-item>
+  </ion-list>
+  <h2>Cupons</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label>Titulo do Cupom</ion-label>
+      <ion-input type="text" name="titulo" [(ngModel)]="cupom.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Segmento</ion-label>
+      <ion-select [(ngModel)]="cupom.segmento">
+        <ion-option *ngFor="let segment of segmentos | async" value="{{ segment.titulo }}">{{ segment.titulo }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select [(ngModel)]="cupom.categoria">
+        <ion-option *ngFor="let category of categorias | async" value="{{ category.titulo }}">{{ category.titulo }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list radio-group [(ngModel)]="cupom.pacote">
+    <ion-list-header>
+        Pacote
+    </ion-list-header>    
+    <ion-item *ngFor="let pkg of pacotes | async" (click)="pacoteclick(pkg)">
+      <ion-label>{{ pkg.titulo }}</ion-label>
+      <ion-radio value="{{ pkg.titulo }}"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+      <ion-list-header>
+          Estabelecimento
+      </ion-list-header>    
+      <ion-item>
+        <ion-select [(ngModel)]="cupom.estabelecimento">
+          <ion-option *ngFor="let place of estabelecimentos | async" value="{{ place.titulo }}">{{ place.titulo }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  <ion-list>
+    <ion-item>
+      <button ion-button (click)="inserirCupom()">Inserir Cupom</button>
+    </ion-item>
+  </ion-list>
+  <h2>Segmento</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label>Titulo</ion-label>
+      <ion-input name="titulo" [(ngModel)]="segmento.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="inserirSegmento()">Inserir Segmento</button>
+    </ion-item>
+  </ion-list>
+  <h2>Categoria</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label>Titulo</ion-label>
+      <ion-input name="titulo" [(ngModel)]="categoria.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Segmento</ion-label>
+      <ion-select [(ngModel)]="categoria.segmento">
+        <ion-option *ngFor="let segmento of segmentos | async" value="{{segmento.titulo}}">{{ segmento.titulo }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="inserirCategoria()">Inserir Categoria</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
